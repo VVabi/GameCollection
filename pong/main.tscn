@@ -3,7 +3,9 @@
 [ext_resource type="Script" uid="uid://diak504hkmkmd" path="res://main.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://de78u6sepvyir" path="res://ball.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://buh7diarn0uee" path="res://wall.tscn" id="2_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://d4j7xe1qi3tfu" path="res://paddle.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://bx8j7svrtatrd" path="res://player.tscn" id="4_1bvp3"]
+[ext_resource type="Script" uid="uid://b3l71gsiloi54" path="res://player.gd" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://bwkeeilfsxkst" path="res://ai.tscn" id="6_7mycd"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ig7tw"]
 friction = 0.0
@@ -13,6 +15,10 @@ bounce = 1.0
 
 [node name="Main" type="Node2D" unique_id=1066868128]
 script = ExtResource("1_h2yge")
+
+[node name="Wall" parent="." unique_id=504729311 instance=ExtResource("2_0xm2m")]
+position = Vector2(0, 313)
+rotation = -1.5707964
 
 [node name="Ball" parent="." unique_id=951747776 instance=ExtResource("1_ig7tw")]
 position = Vector2(94, 298)
@@ -24,11 +30,18 @@ rotation = 3.1415927
 physics_material_override = SubResource("PhysicsMaterial_0xm2m")
 
 [node name="WallTop" parent="." unique_id=1978523263 instance=ExtResource("2_0xm2m")]
+position = Vector2(-4, 0)
 
-[node name="WallRight" parent="." unique_id=504729311 instance=ExtResource("2_0xm2m")]
-position = Vector2(1153, 267)
+[node name="Player" parent="." unique_id=1526061002 instance=ExtResource("4_1bvp3")]
+position = Vector2(30, 300)
+script = ExtResource("5_lquwl")
+
+[node name="AI" parent="." unique_id=179085778 instance=ExtResource("6_7mycd")]
+position = Vector2(1102, 289)
 rotation = 1.5707964
 
-[node name="Paddle" parent="." unique_id=519173362 instance=ExtResource("4_1bvp3")]
-position = Vector2(23, 287)
+[node name="Wall2" parent="." unique_id=1069931124 instance=ExtResource("2_0xm2m")]
+position = Vector2(1156, 286)
 rotation = 1.5707964
+
+[connection signal="ball_position_notifier" from="Ball" to="AI" method="_on_ball_ball_position_notifier"]

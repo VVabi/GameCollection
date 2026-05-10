@@ -5,11 +5,8 @@ extends StaticBody2D
 func _ready() -> void:
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var velocity = 500
-	if Input.is_action_pressed("up"):
-		position.y = position.y-delta*velocity
-	elif Input.is_action_pressed("down"):
-		position.y = position.y+delta*velocity
+	pass
+	
+	

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bwkeeilfsxkst"]
+
+[ext_resource type="Script" uid="uid://ssath0gyqbuu" path="res://ai.gd" id="1_3i38e"]
+[ext_resource type="PackedScene" uid="uid://d4j7xe1qi3tfu" path="res://paddle.tscn" id="2_pqbo1"]
+
+[node name="AI" type="Node2D" unique_id=179085778]
+script = ExtResource("1_3i38e")
+
+[node name="Paddle" parent="." unique_id=1045232052 instance=ExtResource("2_pqbo1")]
